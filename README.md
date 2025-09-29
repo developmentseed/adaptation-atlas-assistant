@@ -1,5 +1,7 @@
 # Adaptation Atlas Co-pilot
 
+[![CI](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml/badge.svg)](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml)
+
 We're going to develop a standalone app that will generate visualizations and text summaries from a user's natural language prompt.
 These visualizations and summaries will be modeled after the stories already in-use on the [Adaptation Atlas](https://adaptationatlas.cgiar.org/).
 

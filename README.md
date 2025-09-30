@@ -1,16 +1,28 @@
-# Adaptation Atlas Co-Pilot
+# Adaptation Atlas Co-pilot
 
-A Python project for adaptation atlas data analysis and processing.
+[![CI](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml/badge.svg)](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml)
 
-## Requirements
+We're going to develop a standalone app that will generate visualizations and text summaries from a user's natural language prompt.
+These visualizations and summaries will be modeled after the stories already in-use on the [Adaptation Atlas](https://adaptationatlas.cgiar.org/).
 
-- Python 3.13+
-- uv package manager
+We track our work on the [project board](https://github.com/orgs/developmentseed/projects/158).
 
-## Setup
+## Development
 
-This project uses `uv` for dependency management. To get started:
+Get [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 
-To install dependencies: `uv sync`
+```sh
+git clone git@github.com:developmentseed/adaptation-atlas-co-pilot.git
+cd adaptation-atlas-co-pilot
+uv sync
+cp .env.example .env
+```
 
-Copy env and replace with real keys `cp .env.example .env`
+Copy example env and replace with real keys.
+
+We use [ruff](https://github.com/astral-sh/ruff) for formatting and linting:
+
+```sh
+uv run ruff check --fix
+uv run ruff format
+```

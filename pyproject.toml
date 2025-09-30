@@ -1,7 +1,7 @@
 [project]
 name = "adaptation-atlas-co-pilot"
-version = "0.1.0"
-description = "Adaptation Atlas Co-Pilot"
+version = "0.0.1"
+description = "Africa Agriculture Adaptation Atlas Co-Pilot"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

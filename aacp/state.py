@@ -4,6 +4,7 @@ from typing import Optional
 from pydantic import Field
 from typing import Literal
 from pydantic import BaseModel
+import pandas as pd
 
 
 class Base64Plot(BaseModel):
@@ -16,7 +17,9 @@ class AgentState(AgentStatePydantic):
         default=None,
         description="The dataset to use for the current task",
     )
-
-    plot: Optional[Base64Plot] = Field(
+    chart_data: Optional[pd.DataFrame] = Field(
+        default=None, description="The data to use for the plot"
+    )
+    chart: Optional[Base64Plot] = Field(
         default=None, description="Base64 string representing a plot"
     )

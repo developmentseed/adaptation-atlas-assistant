@@ -4,7 +4,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     mistral_api_key: str | None = None
-    e2b_api_key: str | None = None
     model_config = SettingsConfigDict(env_file=".env", extra="allow")
 
 

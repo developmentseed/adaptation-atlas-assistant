@@ -1,9 +1,9 @@
 """
 https://github.com/e2b-dev/e2b-cookbook/blob/main/examples/codestral-code-interpreter-python/codestral_code_interpreter.ipynb
 """
+
 from langgraph.prebuilt import InjectedState
 from aacp.settings import get_settings
-import os
 from langchain_core.tools.base import InjectedToolCallId
 from langchain_core.tools import tool
 from typing import Annotated
@@ -14,11 +14,9 @@ from langgraph.types import Command
 import re
 from mistralai import Mistral
 import json
+import pandas as pd
 
 settings = get_settings()
-
-# Set E2B API key as environment variable
-os.environ["E2B_API_KEY"] = settings.e2b_api_key
 
 client = Mistral(api_key=settings.mistral_api_key)
 
@@ -33,14 +31,15 @@ The dataset is in a parquet file in S3. here is the info about the dataset
 
 {dataset_info}
 
-Here is the parquet_metadata of the parquet file:
+Here is a csv of the head of the dataset:
 
+```csv
 {data_sample}
+```
 
 Instructions:
 - Return ONLY executable sql code without any markdown formatting or explanations.
 - Always use the S3 path to read the parquet file in the sql code you write.
-- Use csv mode for the output
 """
 
 
@@ -80,12 +79,13 @@ async def create_chart(
         )
     s3_path = state.dataset.metadata["s3"]
     conn = duckdb.connect()
-    sql_to_extract_metadata = f"""SELECT * FROM parquet_metadata('{s3_path}')"""
+    sql_to_extract_metadata = f"""SELECT * FROM '{s3_path}' LIMIT 5"""
     result = conn.execute(sql_to_extract_metadata)
 
     column_names = [desc[0] for desc in result.description]
     data_rows = result.fetchall()
-    data_sample = [column_names] + list(data_rows)
+    data_sample = pd.DataFrame(data_rows, columns=column_names)
+    conn.close()
 
     response = client.chat.complete(
         model="codestral-latest",
@@ -94,7 +94,7 @@ async def create_chart(
                 "role": "system",
                 "content": SYSTEM_PROMPT_ORIG.format(
                     dataset_info=json.dumps(state.dataset.metadata),
-                    data_sample=data_sample,
+                    data_sample=data_sample.to_string(index=False),
                 ),
             },
             {"role": "user", "content": plot_query},
@@ -104,17 +104,22 @@ async def create_chart(
 
     print("DUCKDB CODE: \n", code)
 
-    # Execute DuckDB query on S3 parquet file
     conn = duckdb.connect()
-    result = conn.execute(code).fetchall()
+    result = conn.execute(code)
+
+    column_names = [desc[0] for desc in result.description]
+    data_rows = result.fetchall()
+    chart_data = pd.DataFrame(data_rows, columns=column_names)
     conn.close()
 
     return Command(
         update={
-            # "plot": results[0][0],
+            "chart_data": chart_data,
             "messages": [
                 ToolMessage(
-                    content=(f"Code: {code}"),
+                    content=(
+                        f"Retrieved data for chart: {chart_data.head().to_string(index=False)}"
+                    ),
                     tool_call_id=tool_call_id,
                 )
             ],

@@ -1,6 +1,7 @@
 """
 https://github.com/e2b-dev/e2b-cookbook/blob/main/examples/codestral-code-interpreter-python/codestral_code_interpreter.ipynb
 """
+
 import io
 from langgraph.prebuilt import InjectedState
 from aacp.settings import get_settings

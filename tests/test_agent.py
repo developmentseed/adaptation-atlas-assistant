@@ -21,10 +21,8 @@ async def _run_agent(query: str, thread_id: str | None = None):
 
 async def test_aacp_agent():
     result = await _run_agent(
-        "Make a plot about pecent change in cattle dry matter intake over all available regions"
+        "Make a plot about pecent change in cattle dry matter intake over all available countries"
     )
 
-    assert "dataset" in result
-    dataset = result["dataset"]
-
-    assert dataset.metadata["key"] == "cattle_hs"
+    assert "chart" in result
+    assert "chart_data" in result

@@ -16,6 +16,8 @@ dependencies = [
     "pyarrow>=15.0.0",
     "pandas>=2.0.0",
     "duckdb>=1.0.0",
+    "plotly>=6.3.0",
+    "chainlit>=2.8.1",
 ]
 
 [build-system]

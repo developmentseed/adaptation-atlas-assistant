@@ -19,6 +19,4 @@ class AgentState(AgentStatePydantic):
     chart_data: Optional[dict] = Field(
         default=None, description="The data to use for the plot"
     )
-    chart: Optional[Base64Plot] = Field(
-        default=None, description="Base64 string representing a plot"
-    )
+    chart: Optional[dict] = Field(default=None, description="Plotly express plot")

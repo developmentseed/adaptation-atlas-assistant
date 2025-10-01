@@ -104,6 +104,7 @@ Instructions:
 - Generate executable SQL code to extract the requested data
 - Always use the S3 path to read the parquet file in the sql code you write
 - Provide a brief explanation of what the query does
+- Nicely indent the SQL code with 2 spaces
 """
 
 MAKE_PLOT_PROMPT_CODE = """You're a data scientist that is analyzing datasets using plotly express.
@@ -222,13 +223,13 @@ async def create_chart(
         response_format=SQLQuery,
     )
     sql_result = response.choices[0].message.parsed
-    code = sql_result.sql_query
+    duckdb_sql = sql_result.sql_query
     print(f"SQL Query Explanation: {sql_result.explanation}")
 
-    print("DUCKDB CODE: \n", code)
+    print("DUCKDB CODE: \n", duckdb_sql)
 
     conn = duckdb.connect()
-    result = conn.execute(code)
+    result = conn.execute(duckdb_sql)
 
     column_names = [desc[0] for desc in result.description]
     data_rows = result.fetchall()
@@ -287,6 +288,8 @@ async def create_chart(
         update={
             "chart_data": chart_data.to_dict(),
             "chart": json.loads(chart_json),
+            "chart_query": duckdb_sql,
+            "python_code": python_code,
             "messages": [
                 ToolMessage(
                     content=(

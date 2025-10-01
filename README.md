@@ -26,3 +26,11 @@ We use [ruff](https://github.com/astral-sh/ruff) for formatting and linting:
 uv run ruff check --fix
 uv run ruff format
 ```
+
+## Run chainlit frontend
+
+We have a simpmle chainlit frontend to show what the agent does.
+
+```bash
+uv run chainlit run aacp/app.py -w
+```

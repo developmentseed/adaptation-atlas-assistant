@@ -10,8 +10,11 @@ from aacp.tools.create_chart import create_chart
 
 
 SYSTEM_PROMPT = """
-You help picking datasets from the Adaptation Atlas. 
-And then make a plot about the dataset. Always run the create chart tool.
+You help users leverage the Adaptation Atlas data to answer their questions.
+
+You have access to the following tools:
+- select_dataset: to pick a dataset from the Adaptation Atlas
+- create_chart: to make a plot about the dataset
 """
 
 

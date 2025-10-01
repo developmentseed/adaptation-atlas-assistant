@@ -15,6 +15,7 @@ async def start():
         Examples:
         - Make a plot about pecent change in cattle dry matter intake over all available countries
         - Give me a plot with information about crop suitability in Kenya
+        - Do you have deforestation data? -- Follow up with: can you analyze this in Mozambique?
         """
     ).send()
 

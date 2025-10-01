@@ -57,29 +57,29 @@ class PlotlyPlotArgs(BaseModel):
         "violin",
         "area",
         "pie",
-        "scatter_3d",
-        "surface",
-        "heatmap",
-        "choropleth",
-        "scatter_mapbox",
-        "scatter_geo",
-        "scatter_polar",
-        "scatter_ternary",
-        "scatter_3d_mapbox",
-        "scatter_3d_geo",
-        "scatter_3d_polar",
-        "scatter_3d_ternary",
-        "scatter_3d_mapbox_geo",
-        "scatter_3d_mapbox_polar",
-        "scatter_3d_mapbox_ternary",
-        "scatter_3d_geo_polar",
-        "scatter_3d_geo_ternary",
-        "scatter_3d_polar_ternary",
-        "scatter_3d_mapbox_geo_polar",
-        "scatter_3d_mapbox_geo_ternary",
-        "scatter_3d_mapbox_polar_ternary",
-        "scatter_3d_geo_polar_ternary",
-        "scatter_3d_mapbox_geo_polar_ternary",
+        # "scatter_3d",
+        # "surface",
+        # "heatmap",
+        # "choropleth",
+        # "scatter_mapbox",
+        # "scatter_geo",
+        # "scatter_polar",
+        # "scatter_ternary",
+        # "scatter_3d_mapbox",
+        # "scatter_3d_geo",
+        # "scatter_3d_polar",
+        # "scatter_3d_ternary",
+        # "scatter_3d_mapbox_geo",
+        # "scatter_3d_mapbox_polar",
+        # "scatter_3d_mapbox_ternary",
+        # "scatter_3d_geo_polar",
+        # "scatter_3d_geo_ternary",
+        # "scatter_3d_polar_ternary",
+        # "scatter_3d_mapbox_geo_polar",
+        # "scatter_3d_mapbox_geo_ternary",
+        # "scatter_3d_mapbox_polar_ternary",
+        # "scatter_3d_geo_polar_ternary",
+        # "scatter_3d_mapbox_geo_polar_ternary",
     ]
     explanation: str
 
@@ -198,7 +198,7 @@ async def create_chart(
                 ]
             }
         )
-    s3_path = state.dataset.metadata["s3"]
+    s3_path = state.dataset["s3"]
     conn = duckdb.connect()
     sql_to_extract_metadata = f"""SELECT * FROM '{s3_path}' LIMIT 5"""
     result = conn.execute(sql_to_extract_metadata)
@@ -214,7 +214,7 @@ async def create_chart(
             {
                 "role": "system",
                 "content": GET_DATA_PROMPT.format(
-                    dataset_info=json.dumps(state.dataset.metadata),
+                    dataset_info=json.dumps(state.dataset),
                     data_sample=data_sample.to_string(index=False),
                 ),
             },

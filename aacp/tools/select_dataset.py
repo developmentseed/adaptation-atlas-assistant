@@ -39,7 +39,7 @@ async def select_dataset(
 
     return Command(
         update={
-            "dataset": results[0][0],
+            "dataset": results[0][0].metadata,
             "messages": [
                 ToolMessage(
                     content=("Returning dataset: " + results[0][0].page_content),

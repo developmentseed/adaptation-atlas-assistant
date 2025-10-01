@@ -1,5 +1,4 @@
 from langgraph.prebuilt.chat_agent_executor import AgentStatePydantic
-from langchain_core.documents import Document
 from typing import Optional
 from pydantic import Field
 from typing import Literal
@@ -12,7 +11,7 @@ class Base64Plot(BaseModel):
 
 
 class AgentState(AgentStatePydantic):
-    dataset: Optional[Document] = Field(
+    dataset: Optional[dict] = Field(
         default=None,
         description="The dataset to use for the current task",
     )

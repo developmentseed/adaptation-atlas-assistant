@@ -114,7 +114,7 @@ async def create_chart(
 
     return Command(
         update={
-            "chart_data": chart_data,
+            "chart_data": chart_data.to_dict(),
             "messages": [
                 ToolMessage(
                     content=(

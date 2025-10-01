@@ -42,7 +42,7 @@ async def create_chart(
 
     Return the chart with a heading and a caption.
 
-    Make the plot following the user query instructions:
+    Make the plot answering as good as possible to the user query instructions:
 
     {chart_query}
     """

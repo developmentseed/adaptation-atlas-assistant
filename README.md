@@ -1,4 +1,4 @@
-# Adaptation Atlas Co-pilot
+# Adaptation Atlas Assistant
 
 [![CI](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml/badge.svg)](https://github.com/developmentseed/adaptation-atlas-co-pilot/actions/workflows/ci.yaml)
 

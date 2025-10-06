@@ -27,8 +27,6 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["aacp*"]
 
-[tool.uv.sources]
-my_base_project = { path = "adaptation-atlas-co-pilot" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

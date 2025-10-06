@@ -31,7 +31,7 @@ uv run pre-commit install
 To run linters and formatters:
 
 ```sh
-uv run pre-commit --all-files
+uv run pre-commit run --all-files
 ```
 
 If you get sick of adding `uv run` to everything:

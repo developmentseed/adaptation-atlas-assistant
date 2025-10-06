@@ -12,8 +12,8 @@ We track our work on the [project board](https://github.com/orgs/developmentseed
 Get [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 
 ```sh
-git clone git@github.com:developmentseed/adaptation-atlas-co-pilot.git
-cd adaptation-atlas-co-pilot
+git clone git@github.com:developmentseed/adaptation-atlas-assistant.git
+cd adaptation-atlas-assistant
 uv sync
 cp .env.example .env
 ```

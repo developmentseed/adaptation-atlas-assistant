@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-        # Runs ruff check by default
-      - uses: astral-sh/ruff-action@v3
-      - name: Check format
-        run: ruff format --check
+      - uses: astral-sh/setup-uv@v6
+      - uses: pre-commit/action@v3.0.1
+      - name: Test
+        run: uv run pytest

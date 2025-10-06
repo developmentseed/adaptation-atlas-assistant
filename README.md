@@ -1,6 +1,6 @@
 # Adaptation Atlas Assistant
 
-[![CI](https://github.com/developmentseed/adaptation-atlas-assistant/actions/workflows/ci.yaml/badge.svg)](https://github.com/developmentseed/adaptation-atlas-assistant/actions/workflows/ci.yaml)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AdaptationAtlas/adaptation-atlas-assistant/ci.yaml?style=for-the-badge)](https://github.com/AdaptationAtlas/adaptation-atlas-assistant/actions/workflows/ci.yaml)
 
 We're going to develop a standalone app that will generate visualizations and text summaries from a user's natural language prompt.
 These visualizations and summaries will be modeled after the stories already in-use on the [Adaptation Atlas](https://adaptationatlas.cgiar.org/).
@@ -22,7 +22,7 @@ uv run chainlit run aacp/app.py -w
 ## Development
 
 ```sh
-git clone git@github.com:developmentseed/adaptation-atlas-assistant.git
+git clone git@github.com:AdaptationAtlas/adaptation-atlas-assistant.git
 cd adaptation-atlas-assistant
 uv sync
 uv run pre-commit install

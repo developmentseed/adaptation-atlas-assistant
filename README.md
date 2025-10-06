@@ -7,31 +7,35 @@ These visualizations and summaries will be modeled after the stories already in-
 
 We track our work on the [project board](https://github.com/orgs/developmentseed/projects/158).
 
-## Development
+## Usage
 
+We have a simple chainlit frontend to show what the agent does.
 Get [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
+
+```bash
+cp .env.example .env
+# Set your API key in .env
+uv run python aacp/embed_datasets.py
+uv run chainlit run aacp/app.py -w
+```
+
+## Development
 
 ```sh
 git clone git@github.com:developmentseed/adaptation-atlas-assistant.git
 cd adaptation-atlas-assistant
 uv sync
-cp .env.example .env
+uv run pre-commit install
 ```
 
-Copy example env and replace with real keys.
-
-We use [ruff](https://github.com/astral-sh/ruff) for formatting and linting:
+To run linters and formatters:
 
 ```sh
-uv run ruff check --fix
-uv run ruff format
+uv run pre-commit run --all-files
 ```
 
-## Run chainlit frontend
+If you get sick of adding `uv run` to everything:
 
-We have a simple chainlit frontend to show what the agent does.
-
-```bash
-uv run python aacp/embed_datasets.py
-uv run chainlit run aacp/app.py -w
+```sh
+source .venv/bin/activate
 ```

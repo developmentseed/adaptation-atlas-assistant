@@ -32,5 +32,6 @@ uv run ruff format
 We have a simple chainlit frontend to show what the agent does.
 
 ```bash
+uv run python aacp/embed_datasets.py
 uv run chainlit run aacp/app.py -w
 ```

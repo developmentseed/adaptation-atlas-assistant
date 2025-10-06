@@ -1,7 +1,7 @@
 [project]
-name = "adaptation-atlas-co-pilot"
+name = "adaptation-atlas-assistant"
 version = "0.0.1"
-description = "Africa Agriculture Adaptation Atlas Co-Pilot"
+description = "Africa Agriculture Adaptation Atlas Assistant"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -26,7 +26,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["aacp*"]
-
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

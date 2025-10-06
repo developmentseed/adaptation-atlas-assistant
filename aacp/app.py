@@ -13,7 +13,7 @@ async def start():
     await cl.Message(
         content="""Hello! Ask me about climate adaptation data from the Adaptation Atlas. 
         Examples:
-        - Make a plot about pecent change in cattle dry matter intake over all available countries
+        - Make a plot about percent change in cattle dry matter intake over all available countries
         - Give me a plot with information about crop suitability in Kenya
         - Do you have deforestation data? -- Follow up with: can you analyze this in Mozambique?
         """

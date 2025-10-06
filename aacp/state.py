@@ -1,0 +1,27 @@
+from langgraph.prebuilt.chat_agent_executor import AgentStatePydantic
+from typing import Optional
+from pydantic import Field
+from typing import Literal
+from pydantic import BaseModel
+
+
+class Base64Plot(BaseModel):
+    type: Literal["image/png"] = "image/png"
+    data: str
+
+
+class AgentState(AgentStatePydantic):
+    dataset: Optional[dict] = Field(
+        default=None,
+        description="The dataset to use for the current task",
+    )
+    chart_query: Optional[str] = Field(
+        default=None, description="The SQL query to use for the plot"
+    )
+    python_code: Optional[str] = Field(
+        default=None, description="The Python code to use for the plot"
+    )
+    chart_data: Optional[dict] = Field(
+        default=None, description="The data to use for the plot"
+    )
+    chart: Optional[dict] = Field(default=None, description="Plotly express plot")

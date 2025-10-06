@@ -1,12 +1,40 @@
 [project]
-name = "adaptation-atlas-co-pilot"
+name = "adaptation-atlas-assistant"
 version = "0.0.1"
-description = "Africa Agriculture Adaptation Atlas Co-Pilot "
+description = "Africa Agriculture Adaptation Atlas Assistant"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "langchain>=0.3.27",
+    "langgraph>=0.6.1",
+    "langchain-mistralai>=0.2.12",
+    "dotenv>=0.9.9",
+    "pydantic-settings>=2.11.0",
+    "langchain-chroma>=0.2.6",
+    "mistralai>=1.9.10",
+    "google-genai>=1.39.1",
+    "pyarrow>=15.0.0",
+    "pandas>=2.0.0",
+    "duckdb>=1.0.0",
+    "plotly>=6.3.0",
+    "chainlit>=2.8.1",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["aacp*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [dependency-groups]
 dev = [
+    "pre-commit>=3.0.0",
     "ruff>=0.13.2",
+    "langchain-chroma>=0.2.6",
+    "pytest>=8.4.2",
+    "pytest-asyncio>=0.24.0",
 ]

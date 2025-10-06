@@ -29,7 +29,7 @@ uv run ruff format
 
 ## Run chainlit frontend
 
-We have a simpmle chainlit frontend to show what the agent does.
+We have a simple chainlit frontend to show what the agent does.
 
 ```bash
 uv run chainlit run aacp/app.py -w

@@ -21,7 +21,7 @@ async def _run_agent(query: str, thread_id: str | None = None):
 
 async def test_aacp_agent():
     result = await _run_agent(
-        "Make a plot about pecent change in cattle dry matter intake over all available countries"
+        "Make a plot about percent change in cattle dry matter intake over all available countries"
     )
 
     assert "chart" in result

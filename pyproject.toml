@@ -33,6 +33,7 @@ dev = [
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+markers = "agent: Test the langchain-based agent using an external LLM model"
 
 [tool.ruff.lint]
 select = ["E", "F", "UP", "B", "SIM", "I"]

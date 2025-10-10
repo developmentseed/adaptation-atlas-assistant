@@ -28,6 +28,19 @@ uv sync
 uv run pre-commit install
 ```
 
+To run any unit tests:
+
+```sh
+uv run pytest
+```
+
+We have some tests that exercise the agent, which requires access to the LLM model.
+To run those:
+
+```sh
+uv run pytest --agent
+```
+
 To run linters and formatters:
 
 ```sh

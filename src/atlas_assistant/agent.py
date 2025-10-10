@@ -6,8 +6,7 @@ from langgraph.prebuilt import create_react_agent
 
 from .settings import Settings
 from .state import AgentState
-from .tools.create_chart import create_chart
-from .tools.select_dataset import select_dataset
+from .tools.choose_dataset import choose_dataset
 
 SYSTEM_PROMPT = """
 You help users leverage the Adaptation Atlas data to answer their questions.
@@ -20,8 +19,7 @@ You have access to the following tools:
 
 async def create_graph(settings: Settings) -> CompiledStateGraph:
     tools = [
-        select_dataset,
-        create_chart,
+        choose_dataset,
     ]
 
     checkpointer = InMemorySaver()

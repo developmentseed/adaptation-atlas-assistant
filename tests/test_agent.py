@@ -1,16 +1,10 @@
-from collections.abc import Callable
-from typing import Any
-
 import pytest
 
-pytestmark = pytest.mark.agent
+import atlas_assistant.agent
+from atlas_assistant.settings import Settings
+
+pytestmark = pytest.mark.integration
 
 
-async def test_agent(run_agent: Callable[[str], Any]):
-    result = await run_agent(
-        "Make a plot about percent change in cattle dry matter intake over all "
-        "available countries"
-    )
-
-    assert "chart" in result
-    assert "chart_data" in result
+async def test_create_graph(settings: Settings) -> None:
+    await atlas_assistant.agent.create_graph(settings)

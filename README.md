@@ -34,11 +34,11 @@ To run any unit tests:
 uv run pytest
 ```
 
-We have some tests that exercise the agent, which requires access to the LLM model.
+We have some integration tests that require an LLM API key.
 To run those:
 
 ```sh
-uv run pytest --agent
+uv run pytest --integration
 ```
 
 To run linters and formatters:

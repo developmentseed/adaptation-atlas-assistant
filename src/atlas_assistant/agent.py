@@ -3,11 +3,10 @@ import datetime
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.prebuilt import create_react_agent
 
-from aacp.state import AgentState
-from aacp.models import mistral_large as llm
-from aacp.tools.select_dataset import select_dataset
-from aacp.tools.create_chart import create_chart
-
+from .models import mistral_large as llm
+from .state import AgentState
+from .tools.create_chart import create_chart
+from .tools.select_dataset import select_dataset
 
 SYSTEM_PROMPT = """
 You help users leverage the Adaptation Atlas data to answer their questions.

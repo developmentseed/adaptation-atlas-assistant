@@ -1,7 +1,9 @@
-import chainlit as cl
-from aacp.agent import create_graph
-import plotly.graph_objects as go
 import json
+
+import chainlit as cl
+import plotly.graph_objects as go
+
+from .agent import create_graph
 
 
 @cl.on_chat_start
@@ -11,7 +13,7 @@ async def start():
     cl.user_session.set("graph", graph)
     cl.user_session.set("thread_id", "default_thread")
     await cl.Message(
-        content="""Hello! Ask me about climate adaptation data from the Adaptation Atlas. 
+        content="""Hello! Ask me about climate adaptation data from the Adaptation Atlas.
         Examples:
         - Make a plot about percent change in cattle dry matter intake over all available countries
         - Give me a plot with information about crop suitability in Kenya

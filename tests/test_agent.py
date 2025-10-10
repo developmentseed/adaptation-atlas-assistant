@@ -2,7 +2,7 @@ from uuid import uuid4
 
 import pytest
 
-from aacp.agent import create_graph
+from atlas_assistant.agent import create_graph
 
 
 async def _run_agent(query: str, thread_id: str | None = None):
@@ -21,7 +21,7 @@ async def _run_agent(query: str, thread_id: str | None = None):
 
 
 @pytest.mark.skip
-async def test_aacp_agent():
+async def test_agent():
     result = await _run_agent(
         "Make a plot about percent change in cattle dry matter intake over all available countries"
     )

@@ -8,16 +8,16 @@ import io
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any
 
 import boto3
 import pandas as pd
 
 
-def load_parquet_config(json_file_path: str) -> List[Dict[str, Any]]:
+def load_parquet_config(json_file_path: str) -> list[dict[str, Any]]:
     """Load and parse the JSON configuration file"""
     try:
-        with open(json_file_path, "r") as f:
+        with open(json_file_path) as f:
             data = json.load(f)
         return data
     except FileNotFoundError:

@@ -29,9 +29,7 @@ async def create_graph():
         tools,
         prompt=(
             SYSTEM_PROMPT
-            + "\nToday is {date:%Y-%m-%d}.".format(
-                date=datetime.datetime.now(datetime.timezone.utc)
-            )
+            + f"\nToday is {datetime.datetime.now(datetime.UTC):%Y-%m-%d}."
         ),
         state_schema=AgentState,
         checkpointer=checkpointer,

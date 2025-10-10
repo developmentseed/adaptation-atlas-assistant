@@ -9,15 +9,19 @@ from langchain_core.tools.base import InjectedToolCallId
 from langchain_mistralai import MistralAIEmbeddings
 from langgraph.types import Command
 
+from ..settings import Settings, get_settings
+
 logger = logging.getLogger(__name__)
 
 
-async def load_datasets_vector_embeddings() -> Chroma:
+async def load_datasets_vector_embeddings(settings: Settings) -> Chroma:
     # Initialize ChromaDB with existing database
     db_path = Path(__file__).parents[3] / "data" / "atlas-assistant-docs-mistral-index"
     if not Path(db_path).exists():
         raise RuntimeError(f"Database does not exist at path {db_path}.")
-    embedder = MistralAIEmbeddings(model="mistral-embed")
+    embedder = MistralAIEmbeddings(
+        model="mistral-embed", api_key=settings.mistral_api_key
+    )
     vectorstore = Chroma(persist_directory=str(db_path), embedding_function=embedder)
     return vectorstore
 
@@ -33,7 +37,8 @@ async def select_dataset(
     Updates the `dataset` state with the details of the best matching dataset if found,
     """
     logger.info(f"Finding dataset for query: {dataset_query}")
-    vectorstore = await load_datasets_vector_embeddings()
+    settings = get_settings()
+    vectorstore = await load_datasets_vector_embeddings(settings)
 
     results = vectorstore.similarity_search_with_score(dataset_query, k=3)
 

@@ -3,7 +3,7 @@ import json
 import chainlit as cl
 import plotly.graph_objects as go
 
-from .agent import create_graph
+from atlas_assistant.agent import create_graph
 
 
 @cl.on_chat_start

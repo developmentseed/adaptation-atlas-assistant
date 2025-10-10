@@ -122,7 +122,7 @@ def display_table_info(df: pd.DataFrame, table_name: str, info: str) -> None:
 def main():
     """Main function to process all parquet files"""
     # Path to the JSON file
-    json_file_path = Path(__file__).parent / "dbSetup.json"
+    json_file_path = Path(__file__).parents[1] / "data" / "datasets.json"
 
     print("Loading parquet file configuration...")
     config_data = load_parquet_config(json_file_path)
@@ -153,7 +153,7 @@ def main():
         df = read_parquet_from_s3(s3_path)
 
         # Display information
-        if df:
+        if not df.empty:
             display_table_info(df, name, info)
         else:
             print("Could not display table information, no data frame retrieved")

@@ -2,7 +2,7 @@
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AdaptationAtlas/adaptation-atlas-assistant/ci.yaml?style=for-the-badge)](https://github.com/AdaptationAtlas/adaptation-atlas-assistant/actions/workflows/ci.yaml)
 
-We're going to develop a standalone app that will generate visualizations and text summaries from a user's natural language prompt.
+We're building a standalone app that will generate visualizations and text summaries of Atlas data from a user's natural language prompt.
 These visualizations and summaries will be modeled after the stories already in-use on the [Adaptation Atlas](https://adaptationatlas.cgiar.org/).
 
 We track our work on the [project board](https://github.com/orgs/developmentseed/projects/158).
@@ -15,8 +15,8 @@ Get [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 ```bash
 cp .env.example .env
 # Set your API key in .env
-uv run python aacp/embed_datasets.py
-uv run chainlit run aacp/app.py -w
+uv run python src/atlas_assistant/embed_datasets.py
+uv run chainlit run src/atlas_assistant/app.py -w
 ```
 
 ## Development

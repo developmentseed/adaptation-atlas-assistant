@@ -15,8 +15,8 @@ Get [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
 ```bash
 cp .env.example .env
 # Set your API key in .env
-uv run python src/atlas_assistant/embed_datasets.py
-uv run chainlit run src/atlas_assistant/app.py -w
+uv run python scripts/embed_datasets.py
+uv run chainlit run app.py -w
 ```
 
 ## Development

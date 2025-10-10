@@ -1,12 +1,12 @@
-from langchain_core.tools.base import InjectedToolCallId
-from langchain_core.tools import tool
-from langchain_chroma import Chroma
-from langchain_mistralai import MistralAIEmbeddings
+import logging
 from pathlib import Path
 from typing import Annotated
-import logging
 
+from langchain_chroma import Chroma
 from langchain_core.messages import ToolMessage
+from langchain_core.tools import tool
+from langchain_core.tools.base import InjectedToolCallId
+from langchain_mistralai import MistralAIEmbeddings
 from langgraph.types import Command
 
 logger = logging.getLogger(__name__)
@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 async def load_datasets_vector_embeddings() -> Chroma:
     # Initialize ChromaDB with existing database
-    db_path = Path("aacp/data/aa-docs-mistral-index")
+    db_path = Path(__file__).parents[3] / "data" / "atlas-assistant-docs-mistral-index"
     if not Path(db_path).exists():
         raise RuntimeError(f"Database does not exist at path {db_path}.")
     embedder = MistralAIEmbeddings(model="mistral-embed")

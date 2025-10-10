@@ -2,20 +2,23 @@
 https://onewri.sharepoint.com/:x:/s/LandandCarbonWatch/ESllWse7dmFAnobmcA4IMXABbyDYhta0p81qnPH3-XUsBw
 """
 
+import json
 from pathlib import Path
 
-from langchain_mistralai import MistralAIEmbeddings
 import dotenv
-import json
 from langchain_chroma import Chroma
+from langchain_mistralai import MistralAIEmbeddings
 
-datasets = json.load(open("aacp/data/datasets.json"))
+root = Path(__file__).parents[1]
+
+with open(root / "data" / "datasets.json") as f:
+    datasets = json.load(f)
 
 dotenv.load_dotenv()
 
 embedder = MistralAIEmbeddings(model="mistral-embed")
 
-data_dir = Path("aacp/data").absolute()
+data_dir = Path(root / "data").absolute()
 
 docs = []
 metadatas = []
@@ -28,5 +31,5 @@ Chroma.from_texts(
     texts=docs,
     embedding=embedder,
     metadatas=metadatas,
-    persist_directory=str(data_dir / "aa-docs-mistral-index"),
+    persist_directory=str(data_dir / "atlas-assistant-docs-mistral-index"),
 )

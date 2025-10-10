@@ -3,13 +3,15 @@ import json
 import chainlit as cl
 import plotly.graph_objects as go
 
+import atlas_assistant.settings
 from atlas_assistant.agent import create_graph
 
 
 @cl.on_chat_start
 async def start():
     """Initialize the agent when chat starts"""
-    graph = await create_graph()
+    settings = atlas_assistant.settings.get_settings()
+    graph = await create_graph(settings)
     cl.user_session.set("graph", graph)
     cl.user_session.set("thread_id", "default_thread")
     await cl.Message(

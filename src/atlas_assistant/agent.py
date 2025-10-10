@@ -1,9 +1,10 @@
 import datetime
 
 from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import create_react_agent
 
-from .models import mistral_large as llm
+from .settings import Settings
 from .state import AgentState
 from .tools.create_chart import create_chart
 from .tools.select_dataset import select_dataset
@@ -17,7 +18,7 @@ You have access to the following tools:
 """
 
 
-async def create_graph():
+async def create_graph(settings: Settings) -> CompiledStateGraph:
     tools = [
         select_dataset,
         create_chart,
@@ -25,7 +26,7 @@ async def create_graph():
 
     checkpointer = InMemorySaver()
     return create_react_agent(
-        llm,
+        settings.get_chat_model(),
         tools,
         prompt=(
             SYSTEM_PROMPT

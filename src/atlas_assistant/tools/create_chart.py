@@ -21,10 +21,6 @@ from pydantic import BaseModel, Field
 from ..settings import get_settings
 from ..state import AgentState
 
-settings = get_settings()
-
-client = Mistral(api_key=settings.mistral_api_key)
-
 
 class SQLQuery(BaseModel):
     """Structured output for SQL query generation."""
@@ -185,6 +181,9 @@ async def create_chart(
     data_sample = pd.DataFrame(data_rows, columns=column_names)
     conn.close()
 
+    settings = get_settings()
+
+    client = Mistral(api_key=settings.mistral_api_key.get_secret_value())
     response = client.chat.parse(
         model="codestral-latest",
         messages=[

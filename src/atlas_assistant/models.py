@@ -1,7 +1,7 @@
 from langchain_mistralai import ChatMistralAI
 from pydantic import SecretStr
 
-from aacp.settings import get_settings
+from .settings import get_settings
 
 settings = get_settings()
 

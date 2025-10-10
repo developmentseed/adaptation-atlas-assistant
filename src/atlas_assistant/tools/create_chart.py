@@ -3,24 +3,23 @@ https://github.com/e2b-dev/e2b-cookbook/blob/main/examples/codestral-code-interp
 """
 
 import io
-from langgraph.prebuilt import InjectedState
-from aacp.settings import get_settings
-from langchain_core.tools.base import InjectedToolCallId
-from langchain_core.tools import tool
-from typing import Annotated
-import duckdb
-from aacp.state import AgentState
-from langchain_core.messages import ToolMessage
-from langgraph.types import Command
-import re
-from mistralai import Mistral
 import json
-import pandas as pd
-from pydantic import BaseModel
-from typing import Literal
-import plotly.express as px
-from pydantic import Field
+import re
+from typing import Annotated, Literal
 
+import duckdb
+import pandas as pd
+import plotly.express as px
+from langchain_core.messages import ToolMessage
+from langchain_core.tools import tool
+from langchain_core.tools.base import InjectedToolCallId
+from langgraph.prebuilt import InjectedState
+from langgraph.types import Command
+from mistralai import Mistral
+from pydantic import BaseModel, Field
+
+from ..settings import get_settings
+from ..state import AgentState
 
 settings = get_settings()
 
@@ -129,7 +128,7 @@ Example plotly express plot arguments:
 ```json
 {{
     "x": "category",
-    "y": "value", 
+    "y": "value",
     "title": "Bar Chart"
 }}
 ```

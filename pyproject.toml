@@ -1,5 +1,5 @@
 [project]
-name = "adaptation-atlas-assistant"
+name = "atlas-assistant"
 version = "0.0.1"
 description = "Africa Agriculture Adaptation Atlas Assistant"
 readme = "README.md"
@@ -23,9 +23,6 @@ dependencies = [
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
-
-[tool.setuptools.packages.find]
-include = ["aacp*"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

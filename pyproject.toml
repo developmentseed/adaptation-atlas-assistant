@@ -20,13 +20,6 @@ dependencies = [
     "chainlit>=2.8.1",
 ]
 
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
-
 [dependency-groups]
 dev = [
     "pre-commit>=3.0.0",
@@ -37,3 +30,14 @@ dev = [
     "boto3>=1.40.49",
     "pandas>=2.3.3",
 ]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.ruff.lint]
+select = ["E", "F", "UP", "B", "SIM", "I"]
+ignore = ["E501"]  # Don't worry about line length
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -23,7 +23,8 @@ async def _run_agent(query: str, thread_id: str | None = None):
 @pytest.mark.skip
 async def test_agent():
     result = await _run_agent(
-        "Make a plot about percent change in cattle dry matter intake over all available countries"
+        "Make a plot about percent change in cattle dry matter intake over all "
+        "available countries"
     )
 
     assert "chart" in result

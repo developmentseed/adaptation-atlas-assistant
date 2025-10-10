@@ -1,8 +1,7 @@
-from langgraph.prebuilt.chat_agent_executor import AgentStatePydantic
-from typing import Optional
-from pydantic import Field
 from typing import Literal
-from pydantic import BaseModel
+
+from langgraph.prebuilt.chat_agent_executor import AgentStatePydantic
+from pydantic import BaseModel, Field
 
 
 class Base64Plot(BaseModel):
@@ -11,17 +10,17 @@ class Base64Plot(BaseModel):
 
 
 class AgentState(AgentStatePydantic):
-    dataset: Optional[dict] = Field(
+    dataset: dict | None = Field(
         default=None,
         description="The dataset to use for the current task",
     )
-    chart_query: Optional[str] = Field(
+    chart_query: str | None = Field(
         default=None, description="The SQL query to use for the plot"
     )
-    python_code: Optional[str] = Field(
+    python_code: str | None = Field(
         default=None, description="The Python code to use for the plot"
     )
-    chart_data: Optional[dict] = Field(
+    chart_data: dict | None = Field(
         default=None, description="The data to use for the plot"
     )
-    chart: Optional[dict] = Field(default=None, description="Plotly express plot")
+    chart: dict | None = Field(default=None, description="Plotly express plot")
